@@ -1,0 +1,16 @@
+import PyPDF2
+
+# Open the PDF file in read-binary mode
+with open('example.pdf', 'rb') as pdf_file:
+    # Create a PDF reader object
+    pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+    
+    # Get the number of pages in the PDF file
+    num_pages = pdf_reader.getNumPages()
+    print(f'The PDF file has {num_pages} pages.')
+    
+    # Loop through each page and print its text content
+    for page_num in range(num_pages):
+        page = pdf_reader.getPage(page_num)
+        text = page.extractText()
+        print(f'Page {page_num+1}:\n{text}\n')
